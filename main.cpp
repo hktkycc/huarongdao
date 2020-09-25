@@ -24,7 +24,7 @@ List *init()
 	board->state[3][0] = 4; board->state[3][1] = 7; board->state[3][2] = 7; board->state[3][3] = 5;
 	board->state[4][0] = 7; board->state[4][1] = 0; board->state[4][2] = 0; board->state[4][3] = 7;
 	return board;
-}//初始化棋盘，横刀立马开局
+}//初始化棋盘，横刀立马开局，在这里修改开局阵法
 
 void show(List* board)
 {
@@ -65,7 +65,27 @@ void save(List* board)
 	current = current->next;
 }//向链表后续入保存棋盘状态
 
+class chess {
+public:int x, y, w, h, lb, rb, tb, bb, type;
+	  bool lable, rable, uable, dable;
+	  string name;
 
+	  void GetLocation(List * board) {
+		  for (int i = 0; i < 5; i++)
+		  {
+			  for (int j = 0; j < 4; j++)
+			  {
+				  if (board->state[i][j] == type)
+				  {
+					  x = i;
+					  y = j;
+					  i = 100;
+					  break;
+				  }
+			  }
+		  }
+	  }
+};//定义一个棋子类
 
 int main()
 {
